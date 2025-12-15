@@ -13,7 +13,7 @@ export const createToken = (id)=>{
 export const userRegister = async (req, res)=>{
     try {
         const {name, email, password} = req.body;
-        const exist = await User.find({email});
+        const exist = await User.findOne({email});
         if(exist){
             return res.json({success: false, message: "User already exist!"})
         }
@@ -50,7 +50,7 @@ export const userRegister = async (req, res)=>{
 export const userLogin = async (req, res)=> {
 try {
     const {email, password} = req.body;
-    const user = await User.find({email});
+    const user = await User.findOne({email});
 
     if(!user){
         return res.json({success: false, message: "User not found"})

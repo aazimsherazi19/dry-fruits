@@ -35,7 +35,7 @@ export const addProduct = async (req, res)=> {
 
     }
 
-    const product = Product.create(newProduct);
+    const product = new Product(newProduct);
     await product.save();
 
     res.json({success: true, message: "Product Added Successfully"});
