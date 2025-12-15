@@ -31,7 +31,11 @@ export const updateCart = async (req, res)=> {
         if(!user){
             return res.json({success: false, message: "Please login to continue"})
         }
-        let cartData = user.cartDta || {};
+        let cartData = user.cartData || {};
+
+        if(!cartData[productId]){
+            cartData[productId] = {};
+        }
         if(quantity <= 0){
             delete cartData[productId][weight];
 
